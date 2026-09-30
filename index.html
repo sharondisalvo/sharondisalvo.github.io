@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sharon Di Salvo</title>
+<meta name="description" content="Websites for healers, hypnotists, coaches and practitioners. Designed around your practice, coded by hand, looked after once it's live.">
+<link rel="stylesheet" href="fonts.css">
+<style>
+/* Layout: a gallery wall. Each project hangs as a wide plate with a museum label beside it; the frame stays cool and quiet so the two warm sites read as the work. */
+:root{
+  --wall:#f4f3f0; --paper:#ffffff; --ink:#1b1d22; --muted:#5b5e66;
+  --accent:#2c4a7a; --line:#dcd9d3; --mat:#e9e7e2;
+  --display:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --body:"Figtree","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--wall);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;margin:0;text-wrap:balance}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:0}
+
+/* Top bar */
+.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--wall) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.name{font-family:var(--display);font-size:24px;text-decoration:none;color:var(--ink)}
+.top nav{display:flex;gap:22px;font-size:15px}
+.top nav a{color:var(--muted);text-decoration:none}
+.top nav a:hover{color:var(--ink)}
+
+/* Intro */
+.intro{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr);gap:56px;align-items:end;padding-block:72px 64px}
+.intro h1{font-size:clamp(46px,6.6vw,88px);letter-spacing:-.01em}
+.intro h1 em{color:var(--accent)}
+.intro .lede{font-size:19px;color:var(--muted);max-width:56ch;margin-top:26px}
+.intro figure{margin:0;display:grid;gap:10px}
+.intro figure img{aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;width:100%}
+.intro figcaption{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;font-size:15px}
+.facts span{display:flex;gap:8px;align-items:baseline}
+.facts b{font-weight:600}
+
+/* Case study */
+.case{border-top:1px solid var(--line);padding-block:72px}
+.case-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:start;margin-bottom:40px}
+.case-head h2{font-size:clamp(40px,5vw,64px)}
+.case-head .num{font-family:var(--mono);font-size:13px;color:var(--accent);display:block;margin-bottom:14px}
+.case-head .brief{font-size:19px;max-width:54ch}
+.case-head .brief+p{color:var(--muted);margin-top:14px;max-width:58ch}
+.plate{background:var(--mat);padding:clamp(12px,2.4vw,28px)}
+.browser{background:var(--paper);box-shadow:0 1px 0 var(--line),0 20px 40px -24px rgba(27,29,34,.28)}
+.browser .bar{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.browser .bar i{width:8px;height:8px;border-radius:50%;background:var(--line);display:inline-block}
+.hang{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1fr);gap:clamp(16px,2.4vw,28px);margin-top:clamp(16px,2.4vw,28px);align-items:start}
+.stack{display:grid;gap:clamp(16px,2.4vw,28px)}
+.phone{background:#15171b;border-radius:34px;padding:10px;box-shadow:0 20px 40px -24px rgba(27,29,34,.4);max-width:260px;margin-inline:auto;width:100%}
+.phone img{border-radius:26px;aspect-ratio:390/844;object-fit:cover;object-position:top;width:100%}
+.tombstone{background:var(--paper);border:1px solid var(--line);padding:18px 20px;display:grid;gap:6px;font-size:14px;max-width:320px}
+.tombstone strong{font-family:var(--display);font-size:22px;font-weight:400}
+.tombstone em{font-style:italic}
+.tombstone .label{margin-top:6px}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:40px}
+.notes div{display:grid;gap:8px;align-content:start;border-top:2px solid var(--ink);padding-top:14px}
+.notes h3{font-family:var(--body);font-weight:600;font-size:16px}
+.notes p{color:var(--muted);font-size:15.5px}
+.case-foot{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:500;font-size:15px;background:transparent;cursor:pointer;font-family:var(--body)}
+.btn:hover{background:var(--ink);color:var(--wall)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink)}
+.aside{font-size:14px;color:var(--muted);max-width:62ch}
+
+/* Approach */
+.approach{border-top:1px solid var(--line);padding-block:72px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:48px}
+.approach h2{font-size:clamp(38px,4.6vw,56px)}
+.principles{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.principles li{display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+.principles h3{font-family:var(--display);font-size:28px}
+.principles p{color:var(--muted);max-width:60ch}
+
+/* Paths */
+.paths{border-top:1px solid var(--line);padding-block:72px}
+.paths h2{font-size:clamp(38px,4.6vw,56px);margin-bottom:32px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.path{background:var(--paper);border:1px solid var(--line);padding:30px;display:grid;gap:12px;align-content:start}
+.path h3{font-size:34px}
+.path p{color:var(--muted)}
+.path .label{color:var(--accent)}
+.photo{margin-top:24px;color:var(--muted);max-width:70ch}
+
+/* Contact */
+.contact{background:var(--ink);color:var(--wall);margin-top:24px}
+.contact .wrap{padding-block:72px;display:grid;gap:22px}
+.contact h2{font-size:clamp(40px,5.4vw,72px);max-width:18ch}
+.contact p{color:#c9cbd1;max-width:60ch;font-size:18px}
+.mailrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
+.mailrow .label{color:#9da1ab;width:100%}
+.mail{font-family:var(--body);font-size:clamp(20px,3vw,30px);color:#fff;text-decoration:none;border-bottom:1px solid #6f7480;user-select:all}
+.mail:hover{border-color:#fff}
+.contact .btn{border-color:#6f7480;color:var(--wall)}
+.contact .btn:hover{background:var(--wall);color:var(--ink)}
+.contact .links{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:15px;color:#9da1ab}
+.contact .links a{color:#fff}
+footer{background:var(--ink);color:#8b8f99;font-size:13px}
+footer .wrap{padding-block:18px 28px;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));border-top:1px solid #33363d}
+
+
+
+/* Live rebuild of ReTurn's session section as doorways: narrow arches at rest, the one you hover opens wide */
+.rt-session{background:#fff;padding:clamp(20px,3.4vw,44px);font-family:"Josefin Sans","Avenir Next",sans-serif;color:#212121}
+.rt-session h4{font-family:"Playfair Display",Georgia,serif;font-weight:700;color:#c5441f;font-size:clamp(22px,2.6vw,32px);margin:0}
+.rt-sub{font-size:15px;margin-top:6px;color:#374151}
+.rt-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,2vw,24px);margin-top:clamp(18px,2.6vw,30px);align-items:start}
+.rt-step{margin:0;display:grid;gap:10px;text-align:center;outline:none}
+.rt-door{aspect-ratio:2/3;overflow:hidden;background:#eee7df;clip-path:inset(0 24% 0 24% round 999px 999px 0 0);transition:clip-path .9s cubic-bezier(.2,.7,.2,1)}
+.rt-door img,.rt-door video{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.06);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.rt-step:hover .rt-door,.rt-step:focus-visible .rt-door{clip-path:inset(0 4% 0 4% round 999px 999px 0 0)}
+.rt-step:hover .rt-door img,.rt-step:hover .rt-door video,.rt-step:focus-visible .rt-door img{transform:scale(1)}
+.rt-step figcaption b{display:block;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(16px,1.8vw,21px);color:#212121}
+.rt-step figcaption span{display:block;font-size:13px;letter-spacing:.06em;color:#5f5650}
+.rt-step:focus-visible figcaption b{text-decoration:underline;text-underline-offset:4px}
+/* entrance: from a thin slit to the resting doorway, one after another (only when the section starts below the fold) */
+.rt-session.closed .rt-door{clip-path:inset(0 49.5% 0 49.5% round 999px 999px 0 0)}
+.rt-session.closed figcaption{opacity:0;transform:translateY(6px)}
+.rt-session.opening .rt-door{transition-duration:1.3s;transition-delay:calc(var(--i)*.22s)}
+.rt-step figcaption{transition:opacity .8s ease calc(var(--i)*.22s + .6s),transform .8s ease calc(var(--i)*.22s + .6s)}
+@media (hover:none){.rt-door{clip-path:inset(0 12% 0 12% round 999px 999px 0 0)}}
+@media (max-width:560px){.rt-steps{gap:8px}.rt-step figcaption span{font-size:11px}}
+@media (prefers-reduced-motion:reduce){.rt-door,.rt-door img,.rt-door video,.rt-step figcaption{transition:none!important}}
+
+/* Live phone: ReTurn's hero, rebuilt in HTML */
+.rt-phone{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:390/844;container-type:inline-size;background:#b3502c;color:#fff}
+.rt-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.rt-nav{position:absolute;left:6%;right:6%;top:4%;height:13cqw;border-radius:99px;background:rgba(255,255,255,.28);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:space-between;padding-inline:2.2cqw}
+.rt-nav img{width:10cqw;height:10cqw;border-radius:50%;background:#fff;box-shadow:0 0 0 .6cqw #e8913a}
+.rt-burger{width:10cqw;height:10cqw;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-content:center;gap:1.2cqw}
+.rt-burger i{display:block;width:4.6cqw;height:.45cqw;background:#fff}
+.rt-copy{position:absolute;left:9%;right:7%;top:39%;display:grid;gap:1cqw;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.rt-h{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:8.2cqw;line-height:1.12;margin:0}
+.rt-h+.rt-s{margin-top:3cqw}
+.rt-s{font-family:"Josefin Sans","Avenir Next",sans-serif;font-size:4.2cqw;line-height:1.6;margin:0}
+.rt-btn{justify-self:start;margin-top:4cqw;background:#fff;color:#212121;font-family:"Josefin Sans",sans-serif;font-size:4.4cqw;padding:3.4cqw 7cqw;border-radius:99px;text-shadow:none}
+
+
+.no-tr,.no-tr *{transition:none!important}
+@media (max-width:860px){
+  .top nav{display:none}
+  .intro,.case-head,.approach,.two,.hang{grid-template-columns:minmax(0,1fr)}
+  .intro{padding-block:48px;gap:32px}
+  .intro figure{max-width:320px}
+  .notes{grid-template-columns:minmax(0,1fr)}
+  .tombstone{max-width:none}
+  .phone{max-width:220px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="name" href="#top">Sharon Di Salvo</a>
+    <nav aria-label="Sections"><a href="#work">Work</a><a href="#approach">Approach</a><a href="#together">Work together</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="intro">
+      <div>
+        <p class="label">Websites for healers, hypnotists, coaches and practitioners</p>
+        <h1 style="margin-top:18px">Your work is personal. <em>Your website should feel that way.</em></h1>
+        <p class="lede">I was a practitioner who needed a website too. I opened my own hypnosis practice, built its website, and discovered that the building was the part I loved most. Today, alongside my own business, I design websites for people whose work is hard to put into words: the method, the presence, the way it feels to work with them.</p>
+        <div class="facts">
+          <span><b>Background</b> art history, UI/UX design, hypnosis</span>
+          <span><b>Based in</b> Berlin</span>
+          <span><b>Every site</b> coded by hand and cared for after launch</span>
+          <span><b>Also</b> logo creation, private hosting for optimal privacy, consultation</span>
+        </div>
+      </div>
+      <figure>
+        <img src="media/sharon.jpg" alt="Sharon Di Salvo sitting on a teal sofa with a notebook, smiling">
+        <figcaption>Sharon, in the ReTurn studio</figcaption>
+      </figure>
+    </section>
+  </div>
+
+  <div class="wrap" id="work">
+    <!-- Case 01 -->
+    <article class="case" aria-labelledby="c1">
+      <div class="case-head">
+        <div>
+          <span class="num">01 · Own practice</span>
+          <h2 id="c1">ReTurn Hypnosis</h2>
+        </div>
+        <div>
+          <p class="brief">A one-person hypnosis practice in Berlin, asking a stranger to trust someone they've never met for a five-hour session.</p>
+          <p>The site had to do what a first conversation does: make people feel safe, explain an unfamiliar method without jargon, and let the person behind it come through. Warm terracotta, a real studio, a real face, and a booking flow that asks for nothing until someone is ready.</p>
+        </div>
+      </div>
+
+      <div class="plate">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i>returnhypnosis.com</div>
+          <img src="media/return-hero.jpg" alt="ReTurn homepage: a corridor of terracotta doorways behind the headline Hypnosis for the Curious, Brave, and Ready" loading="lazy">
+        </div>
+      </div>
+      <div class="hang">
+        <div class="stack">
+          <div class="plate"><div class="browser">
+            <section class="rt-session" aria-label="ReTurn's session section, rebuilt live">
+              <h4>The Session</h4>
+              <p class="rt-sub">Each session is a 5-hour journey, a deep dive into you. Here's how it unfolds:</p>
+              <div class="rt-steps">
+                <figure class="rt-step" tabindex="0" style="--i:0"><div class="rt-door"><video src="media/studio.webm" poster="media/studio-poster.jpg" autoplay muted loop playsinline aria-label="The opening conversation on a teal sofa"></video></div><figcaption><b>The Conversation</b><span>where it all starts · 2h</span></figcaption></figure>
+                <figure class="rt-step" tabindex="0" style="--i:1"><div class="rt-door"><img src="media/session-2.jpg" alt="A client resting under a yellow blanket during hypnosis" loading="lazy" style="object-position:62% 50%"></div><figcaption><b>Hypnosis &amp; Theta</b><span>relaxed, yet aware · 2h</span></figcaption></figure>
+                <figure class="rt-step" tabindex="0" style="--i:2"><div class="rt-door"><img src="media/session-3.jpg" alt="Sharon smiling with a notebook after the session" loading="lazy" style="object-position:50% 38%"></div><figcaption><b>Integration</b><span>the dots connect · 1h</span></figcaption></figure>
+              </div>
+            </section>
+          </div></div>
+          <div class="plate"><div class="browser"><img src="media/return-about.jpg" alt="About section on an orange gradient with a portrait in an arched frame" loading="lazy"></div></div>
+        </div>
+        <div class="stack">
+          <div class="plate"><div class="phone"><div class="rt-phone" role="img" aria-label="ReTurn homepage on a phone">
+            <img class="rt-bg" src="media/return-corridor.jpg" alt="" loading="lazy">
+            <div class="rt-nav"><img src="media/return-logo.png" alt=""><span class="rt-burger"><i></i><i></i><i></i></span></div>
+            <div class="rt-copy">
+              <p class="rt-h rt-words">Hypnosis</p>
+              <p class="rt-h rt-words">For the Curious, Brave,</p>
+              <p class="rt-h rt-words">and Ready</p>
+              <p class="rt-s rt-words">Irresistibly drawn to the unknown?</p>
+              <p class="rt-s rt-words">This is more than a journey</p>
+              <p class="rt-s rt-words">it's the Adventure of a Lifetime.</p>
+              <span class="rt-btn">Book a Session</span>
+            </div>
+          </div></div></div>
+          <div class="tombstone">
+            <strong>ReTurn Hypnosis</strong>
+            <span><em>Practice website</em>, 2025</span>
+            <span>Berlin</span>
+            <span class="label">Concept · brand mark · art direction · copy · UX/UI · code</span>
+            <span class="label">Photography with a professional photographer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes">
+        <div><h3>Trust before booking</h3><p>The session is explained in three steps, with times, before anyone is asked to commit. The FAQ answers the questions people are shy to ask.</p></div>
+        <div><h3>A person, not a brand</h3><p>A real studio and a real face instead of stock imagery. The voice is warm and a little witty, the way the sessions are.</p></div>
+        <div><h3>It worked</h3><p>For over a year it was the front door of the practice: people found it, trusted it and booked five-hour sessions.</p></div>
+      </div>
+      <div class="case-foot">
+        <a class="btn" href="https://returnhypnosis.com" target="_blank" rel="noopener">Visit returnhypnosis.com ↗</a>
+        <p class="aside">I've stepped away from practice, so this finished site and its domain are available to take over, re-tailored to you. <a href="#together">How that works</a></p>
+      </div>
+    </article>
+
+    <!-- Case 02 -->
+    <article class="case" aria-labelledby="c2">
+      <div class="case-head">
+        <div>
+          <span class="num">02 · Own venture</span>
+          <h2 id="c2">ŌPUNTIA Gatherings</h2>
+        </div>
+        <div>
+          <p class="brief">Small retreats that pair rest with practical learning: herbalism, fermentation, mycology, natural making. Guests leave rested and with a skill they keep.</p>
+          <p>A completely different brief: an events platform that has to feel like a place before the first gathering has happened. Typography does the work here, in a calm serif and generous space, across five languages, with gathering pages, venues, experts, a calendar and a priority list.</p>
+        </div>
+      </div>
+
+      <div class="plate">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i>opuntiagatherings.com</div>
+          <img src="media/opuntia-hero.jpg" alt="ŌPUNTIA homepage: the wordmark on a rust background with the line Beautiful retreats, Skills that stay with you" loading="lazy">
+        </div>
+      </div>
+      <div class="hang">
+        <div class="stack">
+          <div class="plate"><div class="browser"><img src="media/opuntia-intro.jpg" alt="Intro section: Skills you carry home, not memories that fade, above a strip of warm images" loading="lazy"></div></div>
+          <div class="plate"><div class="browser"><img src="media/opuntia-gathering.jpg" alt="A gathering page: Vegetable Fermentation, spring 2027 in Piedmont, with a priority list button" loading="lazy"></div></div>
+        </div>
+        <div class="stack">
+          <div class="plate"><div class="phone"><img src="media/opuntia-mobile.jpg" alt="ŌPUNTIA homepage on a phone" loading="lazy"></div></div>
+          <div class="tombstone">
+            <strong>ŌPUNTIA Gatherings</strong>
+            <span><em>Retreats platform</em>, 2026</span>
+            <span>English, German, Italian, French, Spanish</span>
+            <span class="label">Brand · art direction · copy · UX/UI · code</span>
+            <span class="label">Pre-launch, in build</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes">
+        <div><h3>Five languages, one voice</h3><p>The site runs in five languages, with copy written to read naturally in each rather than translated word for word.</p></div>
+        <div><h3>A format people can picture</h3><p>Four ways to gather, each with its own page, so a visitor understands the idea long before there is a date to book.</p></div>
+        <div><h3>Honest from day one</h3><p>The site says plainly that it is pre-launch and that its imagery is illustrative. No invented scarcity, no bookings before everything is ready.</p></div>
+      </div>
+      <div class="case-foot">
+        <a class="btn" href="https://opuntiagatherings.com" target="_blank" rel="noopener">Visit opuntiagatherings.com ↗</a>
+        <p class="aside">ŌPUNTIA is the business I now focus on. Gatherings are in development and the imagery is illustrative, as the site itself notes.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="wrap">
+    <section class="approach" id="approach" aria-labelledby="ap">
+      <div>
+        <p class="label">Approach</p>
+        <h2 id="ap" style="margin-top:14px">Two very different sites. The same way of working.</h2>
+      </div>
+      <ul class="principles">
+        <li><h3>I listen before I design</h3><p>The goal isn't to make you fit my aesthetic. It's to understand yours, and the people you want to reach.</p></li>
+        <li><h3>Words first</h3><p>Most practitioners find saying what they do harder than choosing how it looks. So we start with your words: your voice, your vision, how you'd describe your work to someone you trust. Then I design around them, so the site feels like you.</p></li>
+        <li><h3>No platform, no template</h3><p>No Wix, Squarespace or ready-made themes. Each site is designed and coded individually, so it's secure, tailored to your practice down to the details, and authentically yours.</p></li>
+        <li><h3>I stay after launch</h3><p>I can host it, maintain it, keep it secure and updated, and change it as your practice grows. You stay the practitioner; you don't become the webmaster.</p></li>
+      </ul>
+    </section>
+
+    <section class="paths" id="together" aria-labelledby="pt">
+      <p class="label">Work together</p>
+      <h2 id="pt" style="margin-top:14px">Two ways in</h2>
+      <div class="two">
+        <div class="path">
+          <span class="label">Ready to open</span>
+          <h3>Make ReTurn yours</h3>
+          <p>The finished returnhypnosis.com site and domain, re-tailored to your name, method, words and photos. Ideal for hypnosis, RTT, regression, QHHT and transformational work. The client reviews stay with me; the section awaits yours.</p>
+        </div>
+        <div class="path">
+          <span class="label">From a blank page</span>
+          <h3>Build something completely yours</h3>
+          <p>From scratch, in a style that fits you: minimal, earthy, bold, mystical, playful or clinical-calm. Reiki, bodywork, coaching, trauma-informed work, breathwork, energy work, or something harder to put into a category.</p>
+        </div>
+      </div>
+      <p class="photo">If you need photography, I work with a photographer I deeply trust, with exactly the sensitivity this work needs. ReTurn's imagery shows the level and atmosphere we can create.</p>
+    </section>
+  </div>
+
+  <section class="contact" id="contact" aria-labelledby="ct">
+    <div class="wrap">
+      <p class="label" style="color:#9da1ab">Contact</p>
+      <h2 id="ct">Your practice deserves a website that feels as considered as the work you do.</h2>
+      <p><strong style="color:#fff;font-weight:500">Tell me what you're building.</strong> What you do, where your practice is now, and how you'd love your website to feel. We'll talk it through and find the right way in.</p>
+      <div class="mailrow">
+        <span class="label">For website enquiries</span>
+        <a class="mail" id="mail" href="mailto:sharondisalvo@icloud.com">sharondisalvo@icloud.com</a>
+        <button class="btn" type="button" id="copy-mail">Copy email</button>
+      </div>
+      <div class="links"><span>See the work:</span><a href="https://returnhypnosis.com" target="_blank" rel="noopener">returnhypnosis.com</a><a href="https://opuntiagatherings.com" target="_blank" rel="noopener">opuntiagatherings.com</a></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 Sharon Di Salvo · Berlin</div></footer>
+
+<script>
+(function(){
+  var b=document.getElementById('copy-mail'); if(!b) return;
+  b.addEventListener('click',function(){
+    var t='sharondisalvo@icloud.com';
+    function ok(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email';},1800);}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');ok();}catch(e){}}
+    try{navigator.clipboard.writeText(t).then(ok,fallback);}catch(e){fallback();}
+  });
+})();
+
+(function(){
+  var s=document.querySelector('.rt-session');
+  if(!s||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(s.getBoundingClientRect().top<innerHeight*0.85) return;
+  s.classList.add('no-tr','closed'); void s.offsetWidth; s.classList.remove('no-tr');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){s.classList.add('opening');s.classList.remove('closed');setTimeout(function(){s.classList.remove('opening');},2200);io.disconnect();}});},{threshold:0.3});
+  io.observe(s);
+})();
+
+</script>
+</body>
+</html>
